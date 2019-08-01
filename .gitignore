@@ -1,0 +1,8 @@
+*.DS_Store
+*.pem
+*.swp
+*.pyc
+clean.sh
+dist
+build
+*.egg-info
