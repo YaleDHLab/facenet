@@ -3,4 +3,5 @@ import warnings
 warnings.filterwarnings(action='ignore')
 
 import facenet.utils
-import facenet.align
+import facenet.crop
+import facenet.model
