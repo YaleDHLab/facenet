@@ -30,6 +30,7 @@ from scipy import misc
 import numpy as np
 import os
 
+
 def layer(op):
   '''Decorator for composable network layers.'''
 
@@ -452,7 +453,7 @@ def bulk_detect_face(images, detection_window_size_ratio, pnet, rnet, onet, thre
 
   images_obj_per_resolution = {}
 
-  # TODO: use some type of rounding to number module 8 to increase probability that pyramid images will have the same resolution across input images
+  # TODO: use some type of rounding to number modulo 8 to increase probability that pyramid images will have the same resolution across input images
 
   for index, scales in enumerate(all_scales):
     h = images[index].shape[0]
