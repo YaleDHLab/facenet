@@ -8,14 +8,24 @@ A packaged version of David Sandberg's [facenet](https://github.com/davidsandber
 pip install yale-dhlab-facenet
 ```
 
-## Usage
+## Crop Faces
 
 To crop all faces in `data/*.jpg`, one can run:
 
 ```python
-from facenet.align import crop_faces
+from facenet.crop import crop_faces
 
-crop_faces({'input_glob': 'data/*.jpg'})
+crop_faces({'input_glob': 'data/*.png'})
 ```
 
 Extracted faces will be written to `./cropped`
+
+# Extract Face Embeddings
+
+To obtain FaceNet embeddings for each face image in a directory, one can run:
+
+```python
+from facenet.model import get_embeddings
+
+get_embeddings({'input_glob': 'cropped/data/*.png'})
+```
