@@ -5,8 +5,10 @@
 *.egg-info
 clean.sh
 test.py
+tmp
+data
 dist
 build
-data
 cropped
+facenet_vectors
 __pycache__

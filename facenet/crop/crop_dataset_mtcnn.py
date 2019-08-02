@@ -33,7 +33,7 @@ import os
 
 # internal
 from facenet.utils import utils
-from facenet.align import detect_face
+from facenet.crop import detect_face
 
 
 # default args for cli
@@ -41,11 +41,12 @@ defaults = {
   'input_glob': None,
   'inputs_nested': False,
   'output_dir': 'cropped',
-  'image_size': 182,
+  'image_size': 160,
   'margin': 44,
   'gpu_memory_fraction': 1.0,
   'detect_multiple_faces': True,
   'random_order': True,
+  'minsize': 20,
 }
 
 
@@ -75,7 +76,6 @@ def crop_faces(arg_d):
     with sess.as_default():
       pnet, rnet, onet = detect_face.create_mtcnn(sess, None)
 
-  minsize = 20 # minimum size of face
   threshold = [ 0.6, 0.7, 0.7 ]  # three steps's threshold
   factor = 0.709 # scale factor
 
@@ -113,7 +113,15 @@ def crop_faces(arg_d):
               img = utils.to_rgb(img)
             img = img[:,:,0:3]
 
-            bounding_boxes, _ = detect_face.detect_face(img, minsize, pnet, rnet, onet, threshold, factor)
+            bounding_boxes, _ = detect_face.detect_face(
+              img,
+              args.get('minsize'),
+              pnet,
+              rnet,
+              onet,
+              threshold,
+              factor,
+            )
             nrof_faces = bounding_boxes.shape[0]
             if nrof_faces>0:
               det = bounding_boxes[:,0:4]
@@ -158,8 +166,8 @@ def crop_faces(arg_d):
               print('Unable to align {0}'.format(image_path))
               text_file.write('{0}\n'.format(output_filename))
 
-  print('Total number of images: {0}'.format(nrof_images_total))
-  print('Number of successfully aligned images: {0}'.format(nrof_successfully_aligned))
+  print(' * Processed {0} images'.format(nrof_images_total))
+  print(' * Identified {0} faces'.format(nrof_successfully_aligned))
 
 
 def parse_arguments(argv):
@@ -180,6 +188,8 @@ def parse_arguments(argv):
     help='Detect and align multiple faces per image.')
   parser.add_argument('--random_order', type=bool, default=defaults.get('random_order'),
     help='Shuffles the order of images to enable alignment using multiple processes.')
+  parser.add_argument('--minsize', type=int, default=defaults.get('minsize'),
+    help='The minimum size of faces to extract.')
   return vars(parser.parse_args(argv))
 
 if __name__ == '__main__':
