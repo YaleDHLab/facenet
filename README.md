@@ -5,7 +5,7 @@ A packaged version of David Sandberg's [facenet](https://github.com/davidsandber
 ## Installation
 
 ```bash
-pip install yale-facenet
+pip install yale-dhlab-facenet
 ```
 
 ## Usage

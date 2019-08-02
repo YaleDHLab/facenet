@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup (
-  name='yale-facenet',
+  name='yale-dhlab-facenet',
   version='0.0.1',
   packages=['facenet', 'facenet.utils', 'facenet.align'],
   package_data={
