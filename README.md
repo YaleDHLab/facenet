@@ -20,7 +20,7 @@ crop_faces({'input_glob': 'data/*.png'})
 
 Extracted faces will be written to `./cropped`
 
-# Extract Face Embeddings
+## Extract Face Embeddings
 
 To obtain FaceNet embeddings for each face image in a directory, one can run:
 
