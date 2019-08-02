@@ -2,7 +2,11 @@
 *.pem
 *.swp
 *.pyc
+*.egg-info
 clean.sh
+test.py
 dist
 build
-*.egg-info
+data
+cropped
+__pycache__
