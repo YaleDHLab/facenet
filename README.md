@@ -1,6 +1,8 @@
 # Facenet
 
-A packaged version of David Sandberg's [facenet](https://github.com/davidsandberg/facenet/blob/master/LICENSE.md), based on the paper [FaceNet](https://arxiv.org/abs/1503.03832) (2015).
+![visualization of faces](./images/faces.png)
+
+Crop and vectorize faces from input images. Packaged from David Sandberg's [facenet](https://github.com/davidsandberg/facenet/blob/master/LICENSE.md), based on the paper [FaceNet](https://arxiv.org/abs/1503.03832) (2015).
 
 ## Installation
 
@@ -29,3 +31,5 @@ from facenet.model import get_embeddings
 
 get_embeddings({'input_glob': 'cropped/data/*.png'})
 ```
+
+This process will write create a directory `facenet_vectors`, and will write one numpy array to that directory for each image in `input_glob`.
