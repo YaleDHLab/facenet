@@ -3,10 +3,10 @@ from setuptools import setup
 setup (
   name='yale-dhlab-facenet',
   version='0.0.2',
-  packages=['facenet', 'facenet.utils', 'facenet.align', 'facenet.model'],
+  packages=['facenet', 'facenet.utils', 'facenet.crop', 'facenet.model'],
   package_data={
     'facenet': [
-      'align/model/*',
+      'crop/model/*',
     ]
   },
   keywords = ['machine-learning', 'tensorflow', 'facenet', 'computer-vision'],
