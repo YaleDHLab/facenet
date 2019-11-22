@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup (
   name='yale-dhlab-facenet',
-  version='0.0.1',
+  version='0.0.2',
   packages=['facenet', 'facenet.utils', 'facenet.align', 'facenet.model'],
   package_data={
     'facenet': [
@@ -21,6 +21,6 @@ setup (
     'requests>=2.22.0',
     'scipy==1.1.0',
     'six>=1.11.0',
-    'tensorflow==1.7',
+    'tensorflow>=1.7,<=2.0.0',
   ],
 )
